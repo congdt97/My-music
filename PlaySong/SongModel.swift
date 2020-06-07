@@ -16,7 +16,7 @@ class SongModel: Mappable {
     
     required init?(map: Map) {}
     
-    init(name: String?, duration: Int?, url: String?, isBuy: Bool?) {
+    init(name: String?, duration: Int?, url: String?) {
         self.name = name
         self.duration = duration
         self.url = url

@@ -23,16 +23,13 @@ class PlaySongViewController: UIViewController {
     @IBOutlet weak var lblEnd: UILabel!
     
     var audioPlayer : AVPlayer!
+    var song: SongModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         playAudioFromURL()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        request()
     }
     
     private func playAudioFromURL() {
@@ -69,24 +66,7 @@ class PlaySongViewController: UIViewController {
         audioPlayer?.play()
     }
     
-    private func request() {
-        AF.request(Constants.getAPI).responseJSON { (response) in
-            do {
-                if let data = response.data {
-                    if let jsonArray = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: AnyObject]] {
-                        for item in jsonArray {
-                            let song = SongModel(JSON: item)
-                            print(song?.name)
-                            // Tao mot bien toan cuc [Song]()
-                            // Append cac song vua dc tao o day vao do
-                            //reload()
-                        }
-                    }
-                }
-            } catch {
-                print("Convert from data to json by NSJSONSeri.. is failed")
-            }
-        }
-    }
+    
+    
 
 }
