@@ -11,12 +11,12 @@ import ObjectMapper
 
 class SongModel: Mappable {
     var name: String?
-    var duration: Int?
+    var duration: String?
     var url: String?
     
     required init?(map: Map) {}
     
-    init(name: String?, duration: Int?, url: String?) {
+    init(name: String?, duration: String?, url: String?) {
         self.name = name
         self.duration = duration
         self.url = url

@@ -60,13 +60,15 @@ extension ListSongViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.img.image = UIImage(named: "girl")
         cell.name.text = self.songs[indexPath.row].name
-        cell.single.text = self.songs[indexPath.row].url
+        cell.single.text = self.songs[indexPath.row].duration
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "PlaySongViewController") as? PlaySongViewController
-        vc?.song = songs[indexPath.row]
+        vc?.listSongs = songs
+        vc?.songIndex = indexPath.row
+        vc?.toggleState = 1
         self.navigationController?.pushViewController(vc!, animated: true)
     }
 
